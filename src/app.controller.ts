@@ -14,6 +14,14 @@ export class AppController {
   #errors = [];
 
 
+  @Get("")
+  @Render("index")
+  getIndex()
+  {
+    
+  }
+
+
   @Get("szallasForm")
   @Render('szallasForm')
   getSzallas(@Query('item') item: DataDto) {
@@ -66,13 +74,9 @@ export class AppController {
    
    if(this.#errors.length == 0)
    {
-    response.render("szallasForm", {
-      msg: "Sikeres adatrögzítés",
-      errors: [],
-      nameData: item.Nev,
-      emailData: item.Email,
-      dateData: item.Datum,
-    })
+
+    response.redirect("sikeresFoglalas",303)
+    
    }
    else{
     response.render("szallasForm", {
@@ -87,16 +91,15 @@ export class AppController {
    }
 
 
-   
-
-
-
-    
-   
-
-
   }
  
+
+
+  @Get("sikeresFoglalas")
+  @Render("sikeresFoglalas")
+  getSiker(){
+
+  }
 
 
 
